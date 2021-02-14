@@ -1,24 +1,5 @@
 pipeline {
     agent any
-    stages {
-        stage('Checkout') { 
-            steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '6b990ce1-ee5b-4fa4-b1cd-c894d5c5e537', url: 'https://gitlab.assurances.group.gca/UFS409/test.git']]])
-            }
-        }
-        stage('Prepare') { 
-            steps {
-                dir ('.sbt') {
-                    writeFile file:'dummy', text:''
-                }
-                bat 'set'
-                bat 'dir /s'
-            }
-        }
-        stage('Build') {
-            steps {
-                bat 'mvn clean install'
-            }
-        }
+    stages {     
     }
 }
